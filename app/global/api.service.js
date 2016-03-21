@@ -54,15 +54,36 @@ function apiService($http, $q, $timeout) {
         return self.fake(result);
     };
 
-	self.getCrosses = function () {
-		var deffered = $q.defer();
+	self.getCrosses = function (options) {
+		//var deffered = $q.defer();
 
-		var data = $http({
-			                 url: "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&centre_point=51.684183,-3.431481",
-			                 method: "JSONP"
-		                 });
+		return $http({
+			url: makeApiGetUrl(options),
+			method: "JSONP"
+		});
 
-		return deffered.promise;
+		//return deffered.promise;
+	};
+
+	function makeApiGetUrl(options) {
+		options.action = options.action || 'search_listings';
+		options.encoding = options.encoding || 'json';
+		options.country = options.country || 'uk';
+		options.page = options.page || '1';
+		options.pretty = options.pretty || '1';
+
+		if (options.hasOwnProperty('params') && isArray(options.params)) {
+			options.params.callback = options.params.callback || 'JSON_CALLBACK';
+
+			options.params = [options.params.join('&')];
+		}
+
+		var result = [];
+		for(var key in options){
+			result.push(key + '=' + encodeURIComponent(options[key]));
+		}
+
+		return 'http://api.nestoria.co.uk/api?' + result.join('&');
 	}
 
 }
