@@ -3,15 +3,15 @@ var config = require('app.config'),
     _ = require('underscore'),
     moment = require('moment');
 
-crossListController.$inject = [ '$scope', 'api'];
-function crossListController( $scope, api ) {
+crossListController.$inject = [ 'api'];
+function crossListController( api ) {
     var self = this;
-	$scope.options = {
+	self.options = {
 		centre_point: '51.684183,-3.431481'
 	};
 
-	$scope.go = function() {
-		api.getCrosses($scope.options).then(function(crosses){
+	self.go = function() {
+		api.getCrosses(self.options).then(function(crosses){
 			self.crosses = crosses;
 		}, function(error) {
 			debugger;
