@@ -16,7 +16,7 @@ function crossController( $stateParams, $window, api ) {
 
 	self.back = function() {
 		$window.history.back();
-	}
+	};
 }
 
 module.exports = crossController;

@@ -31,7 +31,8 @@ var config = {
             'underscore',
             'ui.router',
             'angular-bootstrap-npm/dist/angular-bootstrap',
-            'oclazyload'
+            'oclazyload',
+            'angular-paging'
         ],
         app: [
             'app.module.js'

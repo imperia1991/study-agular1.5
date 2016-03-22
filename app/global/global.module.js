@@ -10,6 +10,7 @@ var globalModule = angular
         require('./utility/utility.module.js').name
     ])
     .factory('State', require('./state.factory.js'))
-    .service('api', require('./api.service.js'));
+    .service('api', require('./api.service.js'))
+    .service('store', require('./store.service.js'));
 
 module.exports = globalModule;

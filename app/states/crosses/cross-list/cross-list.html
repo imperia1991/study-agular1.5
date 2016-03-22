@@ -1,7 +1,10 @@
 <div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-7">
             <h1 class="pull-left">Property cross</h1>
+        </div>
+        <div class="col-md-5">
+            <a ui-sref="crosses.cross-search" class="btn btn-primary">Search Form</a>
         </div>
     </div>
 
@@ -12,4 +15,28 @@
             Nothing found
         </div>
     </div>
+
+    <paging
+            class="small"
+            page="ctrl.page"
+            page-size="ctrl.pageSize"
+            total="ctrl.total_pages"
+            adjacent="{{adjacent}}"
+            dots="{{dots}}"
+            hide-if-empty="{{hideIfEmpty}}"
+            ul-class="{{ulClass}}"
+            active-class="{{activeClass}}"
+            disabled-class="{{disabledClass}}"
+            show-prev-next="{{showPrevNext}}"
+            show-first-last="{{showFirstLast}}"
+            text-first="&laquo;"
+            text-last="&raquo;"
+            text-next="&rsaquo;"
+            text-prev="&lsaquo;"
+            text-first-class="glyphicon glyphicon-backward"
+            text-last-class="glyphicon glyphicon-forward"
+            text-next-class="glyphicon glyphicon-chevron-right"
+            text-prev-class="glyphicon glyphicon-chevron-left"
+            paging-action="ctrl.getCrosses(page)">
+    </paging>
 </div>

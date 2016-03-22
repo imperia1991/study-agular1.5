@@ -1,16 +1,14 @@
 "use strict";
 var config = require('app.config'),
-    _ = require('underscore'),
-    moment = require('moment');
+    _ = require('underscore')/*,
+    moment = require('moment')*/;
 
-crossSearchController.$inject = [ '$state' ];
-function crossSearchController( $state ) {
+crossSearchController.$inject = [ '$state', 'store' ];
+function crossSearchController( $state, store ) {
     var self = this;
-	self.city = '';
 
-	if (window.sessionStorage['city']) {
-		self.city = JSON.parse(window.sessionStorage['city'] || '');
-	}
+	self.city = store.read('city', '');
+	store.write('page', config.PAGE_START);
 
 	self.go = function() {
 		var params = {};
@@ -18,7 +16,7 @@ function crossSearchController( $state ) {
 			params.city = self.city
 		}
 
-		window.sessionStorage['city'] = JSON.stringify(self.city);
+		store.write('city', self.city);
 
 		$state.go('crosses.cross-list', params);
 	};

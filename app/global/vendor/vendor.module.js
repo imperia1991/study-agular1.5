@@ -7,5 +7,5 @@ module.exports = angular.module('app.vendor', [
     /*
      * 3rd Party modules
      */
-    'ui.router', 'ui.bootstrap', 'oc.lazyLoad'
+    'ui.router', 'ui.bootstrap', 'oc.lazyLoad', 'bw.paging'
 ]);
