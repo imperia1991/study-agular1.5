@@ -6,7 +6,7 @@ module.exports = angular.module('app.routes.crosses.cross-list', [
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('crosses.cross-list', {
-                url: '/cross-list',
+                url: '/cross-list/:city',
                 views: {
                     'container@': {
                         template: require('./cross-list.html'),

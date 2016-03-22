@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-10">
+        <h3 class="pull-left">Property details</h3>
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-warning">+ Favorite</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="pull-left">{{$ctrl.cross.price_formatted}}</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="pull-left">{{$ctrl.cross.title}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <img src="{{ $ctrl.cross.img_url }}" height="{{ $$ctrl.cross.img_height }}" width="{{ $$ctrl.cross.img_width }}">
+    </div>
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-2">
+        <strong>Bedrooms:</strong>
+    </div>
+    <div class="col-md-9">
+        <span>{{$ctrl.cross.bedroom_number}}</span>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-2">
+        <strong>Bethrooms:</strong>
+    </div>
+    <div class="col-md-9">
+        <span>{{$ctrl.cross.bathroom_number}}</span>
+    </div>
+</div>
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-12">
+        <p>{{$ctrl.cross.summary}}</p>
+    </div>
+</div>

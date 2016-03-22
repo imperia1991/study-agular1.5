@@ -1,8 +1,8 @@
 var config = require('app.config'),
     _ = require('underscore');
 
-apiService.$inject = ['$http', '$q', '$timeout'];
-function apiService($http, $q, $timeout) {
+apiService.$inject = ['$http', '$q', '$timeout', '$httpParamSerializer'];
+function apiService($http, $q, $timeout, $httpParamSerializer) {
     var self = this;
 
 
@@ -55,14 +55,13 @@ function apiService($http, $q, $timeout) {
     };
 
 	self.getCrosses = function (options) {
-		//var deffered = $q.defer();
-
-		return $http({
+		var data = $http({
 			url: makeApiGetUrl(options),
-			method: "JSONP"
+			method: "JSONP",
+			responseType: "json"
 		});
 
-		//return deffered.promise;
+		return data;
 	};
 
 	function makeApiGetUrl(options) {
@@ -71,19 +70,9 @@ function apiService($http, $q, $timeout) {
 		options.country = options.country || 'uk';
 		options.page = options.page || '1';
 		options.pretty = options.pretty || '1';
+		options.callback = options.callback || 'JSON_CALLBACK';
 
-		if (options.hasOwnProperty('params') && isArray(options.params)) {
-			options.params.callback = options.params.callback || 'JSON_CALLBACK';
-
-			options.params = [options.params.join('&')];
-		}
-
-		var result = [];
-		for(var key in options){
-			result.push(key + '=' + encodeURIComponent(options[key]));
-		}
-
-		return 'http://api.nestoria.co.uk/api?' + result.join('&');
+		return 'http://api.nestoria.co.uk/api?' + $httpParamSerializer(options);
 	}
 
 }

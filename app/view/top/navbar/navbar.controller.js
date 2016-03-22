@@ -18,7 +18,7 @@ function navbarController($rootScope, notificationService, $state, $scope) {
     self.openCrosses = function(){
         self.openItem = 'crosses';
 
-	    $state.go('crosses.cross-list');
+	    $state.go('crosses.cross-search');
     };
     self.openImport = function(){
         self.openItem = null;

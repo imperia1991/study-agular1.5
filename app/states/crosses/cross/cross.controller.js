@@ -3,15 +3,20 @@ require('./cross.less');
 var config = require('app.config'),
     _ = require('underscore');
 
-crossController.$inject = ['$scope', 'api', '$stateParams'];
-function crossController($scope, api, $stateParams) {
-
+crossController.$inject = [ '$stateParams', '$window', 'api' ];
+function crossController( $stateParams, $window, api ) {
     var self = this;
+	self.options = {
+		guid: $stateParams.guid || ''
+	};
 
-    api.getCross($stateParams.id).then(function(cross){
-        self.cross = cross;
-    })
+    api.getCrosses(self.options).then(function(crosses){
+        self.cross = crosses.data.response.listings[0];
+    });
 
+	self.back = function() {
+		$window.history.back();
+	}
 }
 
 module.exports = crossController;

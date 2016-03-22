@@ -2,7 +2,7 @@ module.exports = angular.module('app.states.crosses.cross', [])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state('crosses.cross', {
-                url: '/cross/{id:[0-9]+}',
+                url: '/cross/:guid',
                 views: {
                     'container@': {
                         template: require('./cross.html'),
@@ -12,7 +12,7 @@ module.exports = angular.module('app.states.crosses.cross', [])
                 data: {
                     route: {
                         name: 'cross',
-                        text: 'Read cross'
+                        text: 'Property Details'
                     }
                 },
                 resolve: ['$q', '$ocLazyLoad', function ($q, $ocLazyLoad) {

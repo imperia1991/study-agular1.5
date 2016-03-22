@@ -1,5 +1,6 @@
 module.exports = angular.module('app.states.crosses', [
         require('./cross-list/cross-list.module.js').name,
+        require('./cross-search/cross-search.module.js').name,
         require('./cross/cross.module.js').name
     ])
     .config(['$stateProvider', function ($stateProvider) {

@@ -1,0 +1,10 @@
+<div class="row" style="margin-top: 10px">
+    <div class="col-md-1">
+        <img src="{{ $ctrl.cross.thumb_url }}" height="{{ $ctrl.cross.thumb_height }}" width="{{ $ctrl.cross.thumb_width }}">
+    </div>
+    <div class="col-md-11">
+        <h4>{{ $ctrl.cross.title }}</h4>
+        <p>{{ $ctrl.cross.lister_name }}</p>
+        <a ui-sref="crosses.cross({guid:$ctrl.cross.guid})">Read</a>
+    </div>
+</div>
